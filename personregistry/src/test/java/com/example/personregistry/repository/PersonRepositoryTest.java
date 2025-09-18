@@ -43,7 +43,6 @@ class PersonRepositoryTest {
     void whenFindByIdWithAddresses_thenReturnPersonWithAddresses() {
         // given
         Person person = new Person("Jane", "Smith", LocalDate.of(1985, 5, 15));
-        entityManager.persist(person);
 
         Address address = new Address();
         address.setPerson(person);
@@ -52,8 +51,11 @@ class PersonRepositoryTest {
         address.setCity("Budapest");
         address.setZipCode("1011");
         address.setStreet("Main Street");
-        entityManager.persist(address);
 
+        // **Fontos: add hozzá a címet a személyhez**
+        person.getAddresses().add(address);
+
+        entityManager.persist(person); // a cascade = ALL miatt az address is persistálódik
         entityManager.flush();
 
         // when
@@ -63,6 +65,7 @@ class PersonRepositoryTest {
         assertThat(found).isPresent();
         assertThat(found.get().getAddresses()).hasSize(1);
     }
+
 
     @Test
     void whenExistsByFirstNameAndLastNameAndBirthDate_thenReturnTrue() {

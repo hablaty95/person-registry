@@ -41,6 +41,9 @@ class AddressControllerTest {
         address.setAddressType(AddressType.PERMANENT);
         address.setCountry("Hungary");
         address.setCity("Budapest");
+        address.setStreet("Main Street");
+        address.setZipCode("1011");
+
 
         when(addressService.createAddress(any(Address.class))).thenReturn(address);
 
