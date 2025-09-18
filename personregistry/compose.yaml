@@ -1,0 +1,41 @@
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: registry-db
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Password00"  # Fixed password
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    restart: always
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "1433"]
+      interval: 10s
+      retries: 20
+      start_period: 30s
+      timeout: 5s
+
+  mssql-configurator:
+    image: mcr.microsoft.com/mssql-tools:latest
+    depends_on:
+      mssql:
+        condition: service_started
+    environment:
+      SA_PASSWORD: "Password00"
+    command: >
+      /bin/bash -c "
+      echo 'Waiting for SQL Server to be fully ready...';
+      sleep 20;
+      echo 'Running initialization scripts...';
+      /opt/mssql-tools/bin/sqlcmd -S mssql -U sa -P 'Password00' -d master -i /docker-entrypoint-initdb.d/01-init.sql;
+      /opt/mssql-tools/bin/sqlcmd -S mssql -U sa -P 'Password00' -d master -i /docker-entrypoint-initdb.d/02-data.sql;
+      echo 'Database initialization complete!';
+      "
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+
+volumes:
+  mssql_data:
