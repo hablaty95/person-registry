@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Contact")
+@Table(name = "CONTACT")
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

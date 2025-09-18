@@ -7,15 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.context.annotation.Profile;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@Profile("test")
 class AddressRepositoryTest {
 
     @Autowired
@@ -35,6 +32,8 @@ class AddressRepositoryTest {
         address.setAddressType(AddressType.PERMANENT);
         address.setCountry("Hungary");
         address.setCity("Budapest");
+        address.setStreet("Main Street");   // mandatory field
+        address.setZipCode("1000");         // mandatory field
         entityManager.persist(address);
 
         entityManager.flush();
@@ -58,6 +57,8 @@ class AddressRepositoryTest {
         address.setAddressType(AddressType.PERMANENT);
         address.setCountry("Hungary");
         address.setCity("Budapest");
+        address.setStreet("Main Street");   // mandatory field
+        address.setZipCode("1000");         // mandatory field
         entityManager.persist(address);
 
         entityManager.flush();

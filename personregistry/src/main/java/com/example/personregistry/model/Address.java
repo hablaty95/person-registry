@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Address",
+@Table(name = "ADDRESS",
         uniqueConstraints = @UniqueConstraint(columnNames = {"person_id", "address_type"}))
 public class Address {
     @Id
