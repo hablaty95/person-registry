@@ -4,7 +4,7 @@ A simple Spring Boot application to manage persons, their addresses, and contact
 
 ---
 
-bash
+```bash
 docker-compose up
 
 ## Technology Stack
