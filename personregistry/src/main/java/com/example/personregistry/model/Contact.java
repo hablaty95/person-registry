@@ -43,4 +43,52 @@ public class Contact {
     }
 
     // Constructors, getters, setters...
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public ContactType getContactType() {
+        return contactType;
+    }
+
+    public String getContactValue() {
+        return contactValue;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setContactType(ContactType contactType) {
+        this.contactType = contactType;
+    }
+
+    public void setContactValue(String contactValue) {
+        this.contactValue = contactValue;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

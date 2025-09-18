@@ -64,4 +64,81 @@ public class Address {
     }
 
     // Constructors, getters, setters...
+
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public AddressType getAddressType() {
+        return addressType;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setAddressType(AddressType addressType) {
+        this.addressType = addressType;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        this.houseNumber = houseNumber;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
 }
