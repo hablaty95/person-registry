@@ -21,4 +21,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     Optional<Person> findByIdWithAddresses(@Param("id") Long id);
 
     boolean existsByFirstNameAndLastNameAndBirthDate(String firstName, String lastName, LocalDate birthDate);
+
+    @Query("SELECT p FROM Person p WHERE SIZE(p.addresses) > 1")
+    List<Person> findPersonsWithMultipleAddresses();
 }
